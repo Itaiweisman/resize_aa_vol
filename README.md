@@ -7,9 +7,9 @@ byItai
 ```
 
 ## Parameters within script
-
-box_a - DNS Name of first box with A/A
-box_b - DNS Name of second box with A/A
-auth - Authentication Tuple   [ ie ('user','password') ] 
-host - ESXi host (will be changed to cluster with the next release)
-
+Parameter | Description	| Example 
+----------| ----------- | ------- 
+box_a	| DNS Name of first box with A/A | ibox_siteA	
+box_b	| DNS Name of second box with A/A | ibox_siteB
+auth  | Authentication Tuple | ('user','password')
+host  | ESXi host (will be changed to cluster with the next release) | ESX102
