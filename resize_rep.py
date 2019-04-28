@@ -1,4 +1,5 @@
 import requests
+import os
 import json
 from infinisdk import InfiniBox
 from capacity import GiB
@@ -90,8 +91,9 @@ volume_id_box_a=volume_box_a.get_id()
 
 host=box_b_object.hosts.find(name=host).to_list()[0]
 
-print "Moving Paths to standby"
-move_path_to_stb(box_b,auth,volume_id_box_b,to_active=False)
+#print "Moving Paths to standby"
+#move_path_to_stb(box_b,auth,volume_id_box_b,to_active=False)
+#os.system("ssh root@io-cloudcore02 esxcli storage core adapter rescan -a")
 print "Unmapping "
 volume_box_b.unmap()
 replica=volume_box_a.get_replica()
@@ -105,7 +107,8 @@ print "Recreating Replica"
 recreate=recreate_replica_from_base(box_a,auth,vol_replica_link,volume_id_box_a,local_snapshot_id,volume_id_box_b,remote_snapshot_id)
 print "Remapping"
 host.map_volume(volume_box_b)
-print "Moving Paths to active"
-move_path_to_stb(box_b,auth,volume_id_box_b)
+#print "Moving Paths to active"
+#move_path_to_stb(box_b,auth,volume_id_box_b)
+#os.system("ssh root@io-cloudcore02 esxcli storage core adapter rescan -a")
 
 
